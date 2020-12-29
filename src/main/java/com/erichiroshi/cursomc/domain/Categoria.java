@@ -10,14 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
+@Getter
+@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Categoria implements Serializable{
@@ -25,19 +25,17 @@ public class Categoria implements Serializable{
 	
 	@EqualsAndHashCode.Include
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter private Integer id;
+	private Integer id;
 	
-	@Getter @Setter private String nome;
+	private String nome;
 	
-	@JsonIgnore
 	@ManyToMany(mappedBy = "categorias")
-	@Getter List<Produto> produtos = new ArrayList<>();
+	List<Produto> produtos = new ArrayList<>();
 
 	public Categoria(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
 	}
-	
 	
 }

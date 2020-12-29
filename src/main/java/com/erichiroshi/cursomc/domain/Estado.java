@@ -19,6 +19,7 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Estado implements Serializable {
@@ -28,7 +29,7 @@ public class Estado implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Setter private String nome;
+	private String nome;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "estado")

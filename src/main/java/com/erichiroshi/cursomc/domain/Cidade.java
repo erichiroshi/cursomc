@@ -16,6 +16,7 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Cidade implements Serializable {
@@ -25,7 +26,7 @@ public class Cidade implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Setter	private String nome;
+	private String nome;
 
 	@ManyToOne
 	@JoinColumn(name = "estado_id")
