@@ -44,7 +44,7 @@ public abstract class Pagamento implements Serializable {
 		this.pedido = pedido;
 	}
 
-	public EstadoPagamento getTipo() {
+	public EstadoPagamento getEstado() {
 		return EstadoPagamento.toEnum(estado);
 	}
 
