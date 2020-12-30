@@ -51,15 +51,15 @@ public class CategoriaService {
 		}
 	}
 
-	private void updateData(Categoria entity, Categoria obj) {
-		entity.setNome(obj.getNome());
-	}
-	
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
 	}
 	
+	private void updateData(Categoria entity, Categoria obj) {
+		entity.setNome(obj.getNome());
+	}
+
 	public Categoria fromDto(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(), objDto.getNome());
 	}
