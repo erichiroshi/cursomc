@@ -14,19 +14,29 @@ import com.erichiroshi.cursomc.services.exceptions.ObjectNotFoundException;
 public class CategoriaService {
 
 	@Autowired
-	private CategoriaRepository repo;
+	private CategoriaRepository repository;
 
-	public List<Categoria> listar(){
-		return repo.findAll();
+	public List<Categoria> findAll(){
+		return repository.findAll();
 	}
 	
-	public Categoria find(Integer id) {
-		Optional<Categoria> obj = repo.findById(id);
+	public Categoria findById(Integer id) {
+		Optional<Categoria> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
-		return repo.save(obj);
+		return repository.save(obj);
+	}
+
+	public Categoria update(Integer id, Categoria obj) {
+			Categoria entity = findById(id);
+			updateData(entity, obj);
+			return repository.save(entity);
+	}
+
+	private void updateData(Categoria entity, Categoria obj) {
+		entity.setNome(obj.getNome());
 	}
 }
