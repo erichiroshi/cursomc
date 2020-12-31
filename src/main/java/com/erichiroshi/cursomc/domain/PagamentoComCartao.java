@@ -3,6 +3,7 @@ package com.erichiroshi.cursomc.domain;
 import javax.persistence.Entity;
 
 import com.erichiroshi.cursomc.domain.enus.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@JsonTypeName("pagamentoComCartao")
 public class PagamentoComCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
 
